@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>home</title>
+</head>
+<body>
+    <div align="center">
+        <nav>
+            {% if user.is_authenticated %}
+                <a href="">구매</a> |
+                <a href="">프로필</a> |
+                <a href="">로그아웃</a>
+            {%  else %}
+                <a href="">로그인</a> |
+                <a href="{% url 'signup' %}">회원가입</a>
+            {% endif %}
+        </nav>
+    </div>
+    <br>
+    <div align="center">
+        {% load static %}
+        <img src={% static  "/img/teamlab_1.png" %} style="width:30%;height:30%">
+    </div>
+</body>
+</html>
