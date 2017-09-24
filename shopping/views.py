@@ -48,6 +48,7 @@ def refundphoto(request):
 def favorite_photo(request):
 
     favorite_num = request.POST['g_type']
+    print(favorite_num)
     Favorite_Photo.objects.create(favorite_photo_username_id=favorite_num,favorite_user_username_id= request.user.username,boolean='추가')
     return redirect('/shopping/seephoto')
 

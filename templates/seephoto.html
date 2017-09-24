@@ -34,8 +34,12 @@
                     <input type="hidden" name="csrfmiddlewaretoken" value="{{csrf_token}}">
                     <input type="hidden" name="next" value="{{ request.GET.next }}">
                 <button  name="g_type" value={{ num.0 }}>장바구니 추가</button>
+                </form>
 
             {% else %}
+                <form class="form" action="{% url 'favorite_photo' %}" method="post">
+                    <input type="hidden" name="csrfmiddlewaretoken" value="{{csrf_token}}">
+                    <input type="hidden" name="next" value="{{ request.GET.next }}">
                 <button  name="g_type" value={{ num.0 }}>장바구니 추가</button>
                 <h1>매진</h1>
                 </form>
