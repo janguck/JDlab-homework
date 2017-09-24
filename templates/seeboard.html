@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+    .mytable { border-collapse:collapse; }
+    .mytable th, .mytable td { border:1px solid black; }
+</style>
+</head>
+<body>
+    <div align="center">
+        <nav>
+            {% if user.is_authenticated %}
+                <a href="{% url 'seephoto' %}">구매</a> |
+                <a href="{% url 'buy_receipt' %}">구매내역</a> |
+                <a href="{% url 'see_favorite_photo' %}">장바구니</a> |
+                <a href="{% url 'profile' %}">프로필</a> |
+                <a href="{% url 'seeboard' %}">게시판</a> |
+                <a href="{% url 'logout' %}">로그아웃</a>
+            {%  else %}
+                <a href="{% url 'login' %}">로그인</a> |
+                <a href="{% url 'signup' %}">회원가입</a>
+            {% endif %}
+        </nav>
+    </div>
+    <br>
+    <h1>게시판</h1>
+        <table class="mytable">
+            <tr>
+                <th>작성자</th>
+                <th>내용</th>
+            </tr>
+    {% for board in board_list %}
+        <tr>
+            <td>{{ board.1 }}</td>
+            <td>{{ board.0 }}</td>
+        </tr>
+    {% endfor %}
+    </table>
+    <form class="form" action="{% url 'writeboard' %}" method="post">
+        <input type="hidden" name="csrfmiddlewaretoken" value="{{csrf_token}}">
+        <input type="hidden" name="next" value="{{ request.GET.next }}">
+        <div class="form-group">
+            <label>의견 :</label>
+            <input class="form-control" type="text" name="board_name">
+        </div>
+
+        <input type="submit" class="btn btn-primary" value="제출">
+    </form>
+</body>
+</html>

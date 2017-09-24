@@ -39,6 +39,11 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'shopping',
     'account',
+    'board'
+]
+
+AUTHENTICATION_BACKENDS = [
+    'account.views.SionBackend'
 ]
 
 MIDDLEWARE = [
@@ -50,6 +55,8 @@ MIDDLEWARE = [
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 ]
+
+#LOGIN_URL="account/login/"
 
 ROOT_URLCONF = 'blissray.urls'
 

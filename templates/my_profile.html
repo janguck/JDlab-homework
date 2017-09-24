@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Profile</title>
+</head>
+<body>
+    <div align="center">
+        <nav>
+            {% if user.is_authenticated %}
+                <a href="{% url 'seephoto' %}">구매</a> |
+                <a href="{% url 'buy_receipt' %}">구매내역</a> |
+                <a href="{% url 'see_favorite_photo' %}">장바구니</a> |
+                <a href="{% url 'profile' %}">프로필</a> |
+                <a href="{% url 'seeboard' %}">게시판</a> |
+                <a href="{% url 'logout' %}">로그아웃</a>
+            {%  else %}
+                <a href="{% url 'login' %}">로그인</a> |
+                <a href="{% url 'signup' %}">회원가입</a>
+            {% endif %}
+        </nav>
+    </div>
+    <br>
+    <section>
+        Username = {{user.username}}<br>
+        Password = {{user.password}}<br>
+    </section>
+</body>
+</html>
